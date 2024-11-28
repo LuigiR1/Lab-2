@@ -5,16 +5,22 @@ import { StyleSheet, View } from "react-native";
 
 export default function App() {
   const [tasks, setTasks] = useState([
-    'Wash Truck',
-    'Buy Groceries',
-    'Walk Dog'
+    "Wash Truck",
+    "Buy Groceries",
+    "Walk Dog",
   ]);
+
+  const addTask = (taskText) => {
+    if (taskText.trim() !== "") {
+      setTasks([...tasks, taskText]);
+    }
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <ToDoList tasks={tasks} />
-        <ToDoForm />
+        <ToDoForm addTask={addTask} />
       </View>
     </View>
   );
